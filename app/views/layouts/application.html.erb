@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Taskapp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+ <%= link_to image_tag("logoruby.jpg", { :border => '0', :alt => 'home'}), root_path %>
+
+
+<%= yield %>
+
+<%= link_to "home", "/" %>
+
+</body>
+</html>

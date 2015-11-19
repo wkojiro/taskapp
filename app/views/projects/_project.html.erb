@@ -1,0 +1,9 @@
+<ul>
+  
+    <li><%= link_to project.title, project_path(project.id) %> 　　 (残：<%= project.tasks.unfinished.count %>/　全：<%= project.tasks.count %>)
+ 
+    
+          <%= link_to "[edit]", edit_project_path(project.id) %>
+           <%= link_to "[delete]", project_path(project.id), method: :delete, data: {confirm: "are you sure?"} %>    </li>       
+
+</ul>

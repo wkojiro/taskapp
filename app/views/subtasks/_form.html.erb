@@ -1,0 +1,8 @@
+<%= @task.inspect %>
+
+
+ <%= form_for [@project,@task,@subtask] do |f| %>
+    <%= f.text_area :memo, :size=>"60x3" %>
+    <%= f.submit %>
+
+    <% end %>

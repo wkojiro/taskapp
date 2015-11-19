@@ -1,0 +1,57 @@
+<%# @project.inspect %>
+
+<h1><%= @project.title %></h1>
+
+
+<%# @project.tasks.all.pluck(:id, :title, :updated_at) %>
+<h2>総タスク数<%= @tasknumber = @project.tasks.count %></h2>
+
+
+ 
+<% (0..100).each do |i| %>
+<% @taskday = i.day.ago.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
+
+        <% @project.tasks.each do |task| %>
+        <% if task.updated_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日') == @taskday %>
+        <ul>
+        <li>   <%= task.updated_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
+                                            <%= check_box_tag '','', task.done, {'data-id' => task.id, 'data-project_id'=> task.project_id} %>
+                                      <% if task.title.include?("http") %>
+  <a href="<%=task.title%>"><%=task.title%></a>
+  <% else %>
+  <%=task.title%>
+  <% end %>
+                                  
+                                            (<%= task.subtasks.unfinished.count %>/<%= task.subtasks.count %>)
+                                            
+                                            
+                                            <%= link_to "詳細", project_task_path(task.project_id,task.id) %>
+                                
+                                            <%= link_to "[edit]", edit_project_task_path(task.project_id,task.id) %>
+                                            <%= link_to "[delete]", project_task_path(task.project_id,task.id), method: :delete, data: {confirm: "are you sure?"} %>           
+         </li>
+        </ul>        
+    <% end %>
+  <% end %>
+<% end %>
+
+
+
+            <%= form_for [@project, @project.tasks.build] do |f| %>
+               <%= f.text_area :title, :size=>"60x3" %>
+            <%= f.submit %>
+            <% end %>
+ 
+    
+
+
+
+<script>
+        $(function(){
+                $('input[type=checkbox]').click(function(){
+                        var idProject = $(this).data('project_id'),
+                            idTask = $(this).data('id');
+                        $.post('/projects/' + idProject + '/tasks/' + idTask + '/toggle');
+                });
+        });
+</script>   

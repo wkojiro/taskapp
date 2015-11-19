@@ -1,0 +1,52 @@
+<%# @project.inspect %>
+
+<h3><%= @task.title %></h3>
+
+<% (0..100).each do |i| %>
+<% @subtaskday = i.day.ago..strftime('%Y年%m月%d日') %>
+ <% @task.subtasks.each do |subtask| %>
+  <% if subtask.updated_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日') == @subtaskday %>
+      <ul>
+        <li>
+  <%= subtask.updated_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
+    <%= check_box_tag '','', subtask.done, {'data-id' => subtask.id, 'data-task_id'=> subtask.task_id,'data-project_id'=> subtask.task.project_id } %> 
+
+ <% if subtask.memo.include?("http") %>
+  <a href="<%=subtask.memo%>"><%=subtask.memo%></a>
+  <% else %>
+  <%=subtask.memo%>
+  <% end %>
+  
+  
+         <%= link_to "Edit", edit_project_task_subtask_path(@project, @task, subtask) %>
+         <%= link_to "delete", project_task_subtask_path(@project, @task, subtask), method: :delete, data: {confirm: "are you sure?"} %>
+
+ 
+ 
+      </li>
+   </ul>  
+ <% end %>
+ <% end %> 
+  <% end %> 
+  
+  
+
+
+ 
+            <%# form_for [@task, @task.subtasks.build] do |f| %>
+            <%= form_for [@project,@task, @task.subtasks.build] do |f| %>    
+               <%= f.text_area :memo, :size=>"60x3" %>
+            <%= f.submit %>
+            <% end %>
+            
+            
+<script>
+        $(function(){
+                $('input[type=checkbox]').click(function(){
+                        var idProject = $(this).data('project_id'),
+                            idTask = $(this).data('task_id'),
+                            idSubtask = $(this).data('id');
+                 $.post('/projects/' + idProject + '/tasks/' + idTask + '/subtasks/' + idSubtask + '/toggle');
+                });
+        });
+</script>   

@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      project: プロジェクト
+      task: タスク
+      subtask: サブタスク
+    attributes:
+      user:
+        name: 名前
+        email: email
+        password: パスワード
+      project:
+        title: タイトル
+      task:
+        title: タイトル
+      subtask:
+         memo: メモ
+        

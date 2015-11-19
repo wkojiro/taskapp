@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :users
   resources :projects do 
     resources :tasks, only: [:create, :destroy, :edit ,:update ,:show] do
       resources :subtasks, only: [:create, :destroy, :edit ,:update]

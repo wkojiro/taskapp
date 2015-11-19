@@ -1,16 +1,8 @@
+<%= simple_form_for @project, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :title %>
+  <%= error_span(@project[:title]) %>
 
-<%= form_for @project do |f| %>
-
-<p>
-<%= f.label :title %>
-<%= f.text_field :title %>
-<% if @project.errors.any? %>
-<%= @project.errors.messages[:title][0] %>
-<% end %>
-</p>
-<p>
-<%= f.submit %>
-</p>
-
-
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                projects_path, :class => 'btn btn-default' %>
 <% end %>

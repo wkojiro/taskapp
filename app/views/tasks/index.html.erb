@@ -1,30 +1,31 @@
-<%- model_class = @projects -%>
+<%- model_class = Task -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-
+      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:残タスク) %></th>      
-      <th><%= model_class.human_attribute_name(:updated_at) %></th>
+      <th><%= model_class.human_attribute_name(:done) %></th>
+      <th><%= model_class.human_attribute_name(:project_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @projects.each do |project| %>
-
+    <% @tasks.each do |task| %>
       <tr>
-
-        <td><%= link_to project.title, project_path(project.id) %>  </td>
-      　 <td> (残：<%= project.tasks.unfinished.count %>/　全：<%= project.tasks.count %>)</td>
-        <td><%= project.updated_at %></td>
+        <td><%= link_to task.id, task_path(task) %></td>
+        <td><%= task.title %></td>
+        <td><%= task.done %></td>
+        <td><%= task.project_id %></td>
+        <td><%=l task.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_project_path(project), :class => 'btn btn-default btn-xs' %>
+                      edit_task_path(task), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      project_path(project),
+                      task_path(task),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>
@@ -34,8 +35,6 @@
   </tbody>
 </table>
 
-
-
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_project_path,
+            new_task_path,
             :class => 'btn btn-primary' %>

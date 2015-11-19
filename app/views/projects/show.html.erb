@@ -1,14 +1,14 @@
-<%# @project.inspect %>
+<%- model_class = Project -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<h1><%= @project.title %></h1>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+  <dd><%= @project.title %></dd>
+</dl>
 
-
-<%# @project.tasks.all.pluck(:id, :title, :updated_at) %>
-<h2>総タスク数<%= @tasknumber = @project.tasks.count %></h2>
-
-
- 
-<% (0..100).each do |i| %>
+<% (0..30).each do |i| %>
 <% @taskday = i.day.ago.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
 
         <% @project.tasks.each do |task| %>
@@ -16,11 +16,9 @@
         <ul>
         <li>   <%= task.updated_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
                                             <%= check_box_tag '','', task.done, {'data-id' => task.id, 'data-project_id'=> task.project_id} %>
-                                      <% if task.title.include?("http") %>
-  <a href="<%=task.title%>"><%=task.title%></a>
-  <% else %>
-  <%=task.title%>
-  <% end %>
+                                     
+  <%= task.title%>
+
                                   
                                             (<%= task.subtasks.unfinished.count %>/<%= task.subtasks.count %>)
                                             
@@ -35,14 +33,15 @@
   <% end %>
 <% end %>
 
-
-
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
             <%= form_for [@project, @project.tasks.build] do |f| %>
-               <%= f.text_area :title, :size=>"60x3" %>
-            <%= f.submit %>
+               <%= f.text_area :title, :size=>"40x3" ,:class => 'form-control' %><br>
+               <div class="text-center">
+            <%= f.submit :class => 'btn btn-default'%></div>
             <% end %>
- 
-    
+</div>
+</div>    
 
 
 
@@ -55,3 +54,14 @@
                 });
         });
 </script>   
+
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              projects_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_project_path(@project), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              project_path(@project),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

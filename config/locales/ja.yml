@@ -203,3 +203,11 @@ ja:
     dformat: '%R'                   # display format of the time (this is the default, can be ommited)
     pformat: 'HH:mm'                # picking format of the time (this is the default, can be ommited)
   dayViewHeaderFormat: 'MMMM YYYY'  # picking format of the time (this is the default, can be ommited)
+  
+  activerecord:
+     attributes:
+          user:
+           name: 名前
+           password: パスワード
+           password_confirmation: パスワード確認
+           email: メールアドレス

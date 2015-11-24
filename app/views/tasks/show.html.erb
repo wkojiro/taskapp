@@ -4,10 +4,38 @@
   <h1><%= @task.title %></h1>
 </div>
 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>チェック</th>
+      <th>残タスク</th>      
+      <th>更新日時</th>
+      <th>Action</th>
+    </tr>
+  </thead>   
+  <tbody>
+　 <tr>
+　     <td>aa</td>
+　     <td>aa</td>
+　     <td>aa</td>
+　     <td>aa</td>
+
+　 </tr>  
+　 <tr>
+　     <td>aa</td>
+　     <td>aa</td>
+　     <td>aa</td>
+　     <td>aa</td>
+　 </tr>  
+  </tbody>
+</table>
+
+
 <% (0..100).each do |i| %>
 <% @subtaskday = i.day.ago.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
  <% @task.subtasks.each do |subtask| %>
   <% if subtask.updated_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日') == @subtaskday %>
+
 
 
 

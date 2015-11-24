@@ -4,74 +4,62 @@
   <h1><%= @task.title %></h1>
 </div>
 
-<table class="table table-striped">
+<table class="table">
   <thead>
     <tr>
-      <th>チェック</th>
-      <th>残タスク</th>      
-      <th>更新日時</th>
+      <th></th>
+      <th>memo</th>      
+
       <th>Action</th>
     </tr>
   </thead>   
   <tbody>
-　 <tr>
-　     <td>aa</td>
-　     <td>aa</td>
-　     <td>aa</td>
-　     <td>aa</td>
-
-　 </tr>  
-　 <tr>
-　     <td>aa</td>
-　     <td>aa</td>
-　     <td>aa</td>
-　     <td>aa</td>
-　 </tr>  
-  </tbody>
-</table>
-
 
 <% (0..100).each do |i| %>
 <% @subtaskday = i.day.ago.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
  <% @task.subtasks.each do |subtask| %>
   <% if subtask.updated_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日') == @subtaskday %>
-
-
-
-
-<dl class="dl-horizontal">
-  <dt><strong>ステータス：</strong></dt>
-  <dd><%= check_box_tag '','', subtask.done, {'data-id' => subtask.id, 'data-task_id'=> subtask.task_id,'data-project_id'=> subtask.task.project_id } %> </dd>
-  <dt><strong>サブタスク：</strong></dt>
-  <dd>  <%=subtask.memo%></dd>
-  <dt><strong>更新日時：</strong></dt>
-  <dd><%= subtask.updated_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %></dd>
-</dl>
-
-
-
-
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_project_task_subtask_path(@project, @task, subtask) ,:class => 'btn btn-default' %>
+  　 <tr>
+　     <td><%= check_box_tag '','', subtask.done, {'data-id' => subtask.id, 'data-task_id'=> subtask.task_id,'data-project_id'=> subtask.task.project_id } %></td>
+　     <td><%=subtask.memo%></td>
+　    <!-- <td><%# subtask.updated_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %></td> -->
+　     <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_project_task_subtask_path(@project, @task, subtask) ,:class => 'btn btn-xs btn-default' %>
+              &nbsp;<br>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               project_task_subtask_path(@project, @task, subtask), 
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-              
+              :class => 'btn btn-xs btn-danger' %></td>
+
+　 </tr>  
  　 <% end %>
  <% end %> 
-<% end %>        
- <br />
-<div class="col-sm-12">              
-<%= form_for [@project,@task, @task.subtasks.build] do |f| %>    
-<%= f.text_area :memo, :size=>"60x3", :class => 'form-control'  %>
-<div class="text-center">
-<%= f.submit :class => 'btn-primary' %>
-</div>
-<% end %>             
-</div>
+<% end %>   　 
+
+  </tbody>
+</table>
+
+
               
+
+<div class="row">
+
+<div class="col-md-12">    
+            <%= form_for [@project,@task, @task.subtasks.build] do |f| %>   
+               <%= f.text_area :memo, :size=>"60x3" ,:class => 'form-control' %><br>
+               <div class="text-center">
+     
+            <%= f.submit "メモ" ,:class => 'btn btn-default'%></div>
+            <% end %>
+</div>
+</div>  
+
+
+
+
+
+
               
               
 <%= link_to t('.back', :default => t("helpers.links.back")),

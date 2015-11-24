@@ -1,13 +1,9 @@
 <%- model_class = Project -%>
 
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%= @project.title %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @project.title %></dd>
-</dl>
 
 <% (0..30).each do |i| %>
 <% @taskday = i.day.ago.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
@@ -24,10 +20,10 @@
                                             (<%= task.subtasks.unfinished.count %>/<%= task.subtasks.count %>)
                                             
                                             
-                                            <%= link_to "詳細", project_task_path(task.project_id,task.id) %>
+                                            <%= link_to "詳細", project_task_path(task.project_id,task.id),:class => 'btn btn-xs btn-primary'  %>
                                 
-                                            <%= link_to "[edit]", edit_project_task_path(task.project_id,task.id) %>
-                                            <%= link_to "[delete]", project_task_path(task.project_id,task.id), method: :delete, data: {confirm: "are you sure?"} %>           
+                                            <%= link_to "edit", edit_project_task_path(task.project_id,task.id) ,:class => 'btn btn-xs btn-default' %>
+                                            <%= link_to "delete", project_task_path(task.project_id,task.id), method: :delete, data: {confirm: "are you sure?"},:class => 'btn btn-xs btn-danger'  %>           
          </li>
         </ul>        
     <% end %>

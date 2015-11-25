@@ -142,8 +142,8 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 8..72
-
+  #config.password_length = 8..72
+  config.password_length = 4..30
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
@@ -265,7 +265,7 @@ Devise.setup do |config|
     config.omniauth :facebook,  "App ID", "App Secret"
     config.omniauth :twitter,   "Consumer key", "Consumer secret"
   else
-    config.omniauth :facebook,  "165452037143186", "520435c381d1fc659dd9d6a5ff65f3d0", scope: email
+    config.omniauth :facebook,  "165452037143186", "520435c381d1fc659dd9d6a5ff65f3d0"
     config.omniauth :twitter, "dnPLQpXwegx3cwApQd4UnRnDy", "XEIOZTR8EYDA36gkbHdBVmWsQIMxjxk9LBOmBe62MmFHrpqr2s"
   end  
   

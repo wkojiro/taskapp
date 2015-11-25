@@ -3,19 +3,28 @@ class ProjectsController < ApplicationController
 
    
    def index
-      @projects = Project.all 
+   #   @projects = Project.all 
+        if current_user != nil
+         @projects = current_user.projects
+        else
+        redirect_to new_user_registration_path
+        end
+   #   @projects = current_user.projects.find(id: params[:id])
    end
     
    def show
+
    end
-   
+ 
+ 
     def new
-     @project = Project.new
+     @project = current_user.projects.build
         
     end
-    
+
     def create
-     @project = Project.new(project_params)
+ #    @project = Project.new(project_params)
+      @project = current_user.projects.build(project_params)
         if @project.save
         redirect_to projects_path
         else

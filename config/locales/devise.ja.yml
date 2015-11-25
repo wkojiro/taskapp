@@ -8,6 +8,7 @@ ja:
       not_locked: "は凍結されていません"
 #      not_locked: "was not locked"
 
+
   devise:
     failure:
       unauthenticated: 'ログインしてください。'
@@ -20,10 +21,13 @@ ja:
 #      invalid: 'Invalid email or password.'
       invalid_token: '認証キーが不正です。'
 #      invalid_token: 'Invalid authentication token.'
+      not_found_in_database: '登録されていません。'
+#      not_found_in_database: "Invalid %{authentication_keys} or password."
       timeout: 'セッションがタイムアウトしました。もう一度ログインしてください。'
 #      timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'アカウントがアクティベートされていません。'
 #      inactive: 'Your account was not activated yet.'
+      already_authenticated: '既に登録されております'
     sessions:
       signed_in: 'ログインしました。'
 #      signed_in: 'Signed in successfully.'
@@ -46,6 +50,7 @@ ja:
 #      updated: 'You updated your account successfully.'
       destroyed: 'アカウントを削除しました。またのご利用をお待ちしております。'
 #      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+
     unlocks:
       send_instructions: 'アカウントの凍結解除方法を数分以内にメールでご連絡します。'
 #      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
@@ -61,3 +66,6 @@ ja:
       unlock_instructions:
         subject: 'アカウントの凍結解除'
 #        subject: 'Unlock Instructions'
+
+    omniauth_callbacks:
+         success: 'ログインしました！'

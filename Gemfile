@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'devise'
 gem 'omniauth-twitter'
-	
+gem "omniauth-facebook"	
 
 # less(CSS)対応（後述LESSを使う場合）
 gem 'less-rails'

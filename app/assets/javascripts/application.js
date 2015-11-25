@@ -19,3 +19,4 @@
 //= require moment/ja
 //= require bootstrap-datetimepicker
 //= require pickers
+//= require ckeditor/init

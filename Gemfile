@@ -19,6 +19,11 @@ gem 'devise'
 gem 'omniauth-twitter'
 gem "omniauth-facebook"	
 
+gem 'ckeditor'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'rmagick'
+
 # less(CSS)対応（後述LESSを使う場合）
 gem 'less-rails'
 # JavaScript のエンジンである v8 を Ruby から使えるようにする

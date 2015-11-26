@@ -1,8 +1,24 @@
-<%= @task.inspect %>
+
+<div class="row">
+
+<div class="col-md-12">    
+         <%= form_for [@project,@task,@subtask] do |f| %>  
+<div class="form-group">
+  <%= f.label :memo, "タイトル", :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :memo, :class => 'form-control' %>
+  </div>
+  <%= f.label :description, :class => 'control-label' %>
+  <div class="controls">
+ <%= f.cktext_area  :description,:class => 'form-control' ,:cols =>"80" ,:rows =>"10" %>
+  </div>  
+</div>
 
 
- <%= form_for [@project,@task,@subtask] do |f| %>
-    <%= f.text_area :memo, :size=>"60x3" %>
-    <%= f.submit %>
 
-    <% end %>
+               <div class="text-center">
+     
+            <%= f.submit "編集する" ,:class => 'btn btn-default'%></div>
+            <% end %>
+</div>
+</div>  

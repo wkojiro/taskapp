@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+##  mount Ckeditor::Engine => '/ckeditor'
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
   resources :projects do 
     resources :tasks, only: [:create, :destroy, :edit ,:update ,:show] do

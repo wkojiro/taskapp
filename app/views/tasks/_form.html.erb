@@ -2,12 +2,14 @@
 <%= simple_form_for [@project,@task] , :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :title %>
   <%= error_span(@task[:title]) %>
-  <%= f.input :done %>
-  <%= error_span(@task[:done]) %>
-  <%= f.input :project_id %>
-  <%= error_span(@task[:project_id]) %>
+  <%# f.input :done %>
+  <%# error_span(@task[:done]) %>
+  <%# f.input :project_id %>
+  <%# error_span(@task[:project_id]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+  <%# link_to t('.cancel', :default => t("helpers.links.cancel")),
                 tasks_path, :class => 'btn btn-default' %>
 <% end %>
+
+

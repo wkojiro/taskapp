@@ -18,11 +18,10 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
 gem 'omniauth-twitter'
 gem "omniauth-facebook"	
-
-gem 'ckeditor'
-gem 'carrierwave'
-gem 'mini_magick'
-gem 'rmagick'
+gem 'ckeditor', github: 'galetahub/ckeditor'
+#gem 'carrierwave'
+#gem 'mini_magick'
+#gem 'rmagick'
 
 # less(CSS)対応（後述LESSを使う場合）
 gem 'less-rails'

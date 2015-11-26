@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125065140) do
+ActiveRecord::Schema.define(version: 20151126033356) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
@@ -25,10 +25,11 @@ ActiveRecord::Schema.define(version: 20151125065140) do
 
   create_table "subtasks", force: :cascade do |t|
     t.string   "memo"
-    t.boolean  "done",       default: false
+    t.boolean  "done",        default: false
     t.integer  "task_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.text     "description"
   end
 
   add_index "subtasks", ["task_id"], name: "index_subtasks_on_task_id"
@@ -59,6 +60,9 @@ ActiveRecord::Schema.define(version: 20151125065140) do
     t.string   "provider"
     t.string   "uid"
     t.string   "username",               default: "anonymous"
+    t.string   "imageicon"
+    t.string   "url"
+    t.string   "screenname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

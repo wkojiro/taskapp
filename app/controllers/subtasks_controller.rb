@@ -62,7 +62,7 @@ class SubtasksController < ApplicationController
     private
     
     def subtask_params
-        params[:subtask].permit(:memo)
+        params[:subtask].permit(:memo,:description)
     end   
         
 end

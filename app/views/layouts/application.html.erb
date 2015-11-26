@@ -33,7 +33,7 @@
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-
+ <%= yield(:head_js) %>
     <%= javascript_include_tag "application" %>
   </head>
   <body>
@@ -50,6 +50,7 @@
           <ul class="nav navbar-nav">
              <% if user_signed_in? %>
             <li> <%= link_to current_user.username, projects_path %></li>
+            <li> <%= image_tag current_user.imageicon %></li>
             <li>    <%= link_to 'プロフィール変更', edit_user_registration_path %></li>
             <li>    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             <% else %>

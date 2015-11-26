@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
         uid: auth.uid,
         provider: auth.provider,
         username: auth.info.name,
+        screenname: auth.info.screen_name,
+        imageicon: auth.info.image,
         email: User.get_email(auth),
         password: Devise.friendly_token[4, 30])
     end

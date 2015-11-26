@@ -265,8 +265,8 @@ Devise.setup do |config|
     config.omniauth :facebook,  "App ID", "App Secret"
     config.omniauth :twitter,   "Consumer key", "Consumer secret"
   else
-    config.omniauth :facebook,  "165452037143186", "520435c381d1fc659dd9d6a5ff65f3d0"
-    config.omniauth :twitter, "dnPLQpXwegx3cwApQd4UnRnDy", "XEIOZTR8EYDA36gkbHdBVmWsQIMxjxk9LBOmBe62MmFHrpqr2s"
+    config.omniauth :facebook,  "", ""
+    config.omniauth :twitter, "", ""
   end  
   
 end

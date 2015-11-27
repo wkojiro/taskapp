@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :subtasks, only: [:create, :destroy, :edit ,:update]
     end
   end
-  
+  resources :bookmarklets
   post '/projects/:project_id/tasks/:id/toggle' => 'tasks#toggle'
   post '/projects/:project_id/tasks/:id/subtasks/:id/toggle' => 'subtasks#toggle'  
   root 'projects#index'

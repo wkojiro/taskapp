@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151126033356) do
+ActiveRecord::Schema.define(version: 20151127054552) do
+
+  create_table "bookmarklets", force: :cascade do |t|
+    t.string   "url"
+    t.string   "title"
+    t.string   "icon"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "project_id"
+  end
+
+  add_index "bookmarklets", ["project_id"], name: "index_bookmarklets_on_project_id"
+  add_index "bookmarklets", ["user_id"], name: "index_bookmarklets_on_user_id"
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"

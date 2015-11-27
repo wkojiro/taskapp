@@ -22,7 +22,7 @@ gem "omniauth-facebook"
 #gem 'carrierwave'
 #gem 'mini_magick'
 #gem 'rmagick'
-
+gem 'mechanize'
 # less(CSS)対応（後述LESSを使う場合）
 gem 'less-rails'
 # JavaScript のエンジンである v8 を Ruby から使えるようにする

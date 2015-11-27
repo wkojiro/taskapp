@@ -48,7 +48,7 @@
         <%= link_to "Taskapp", root_path,class: 'navbar-brand' %>
 
         <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav navbar-right">
              <% if user_signed_in? %>
             <li> <%= link_to current_user.username, projects_path %></li>
             <li> <%= image_tag current_user.imageicon %></li>
@@ -76,7 +76,9 @@
             <h3>Sidebar</h3>
           
             <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
+              <li class="nav-header">Bookmarks</li>
+              <li>ここにURLを登録する</li>
+              
               <li><%= link_to "Link1", "/path1"  %></li>
               <li><%= link_to "Link2", "/path2"  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>

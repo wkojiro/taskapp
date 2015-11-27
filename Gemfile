@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
 gem 'omniauth-twitter'
 gem "omniauth-facebook"	
-gem 'ckeditor', github: 'galetahub/ckeditor'
+#gem 'ckeditor', github: 'galetahub/ckeditor'
 #gem 'carrierwave'
 #gem 'mini_magick'
 #gem 'rmagick'

@@ -31,8 +31,9 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
+  # config.authentication_keys = [:username]
   # config.authentication_keys = [:email]
-
+  
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
@@ -262,11 +263,14 @@ Devise.setup do |config|
 #  config.omniauth :twitter, "dnPLQpXwegx3cwApQd4UnRnDy", "XEIOZTR8EYDA36gkbHdBVmWsQIMxjxk9LBOmBe62MmFHrpqr2s"
   
   if Rails.env.production?
-    config.omniauth :facebook,  "App ID", "App Secret"
-    config.omniauth :twitter,   "Consumer key", "Consumer secret"
+    config.omniauth :facebook,  "805090062949842", "dcb6c851f5b16be8c109d56ac0dd9466"
+    config.omniauth :twitter,   "1gAdO55zMKsWu8FhZG54O4s8S", "xNAW6luvu4tWNYDvigjKsnyOMgAgtRbrsR3INdl8BT7UQSmAtj"
   else
     config.omniauth :facebook,  "165452037143186", "520435c381d1fc659dd9d6a5ff65f3d0"
     config.omniauth :twitter, "dnPLQpXwegx3cwApQd4UnRnDy", "XEIOZTR8EYDA36gkbHdBVmWsQIMxjxk9LBOmBe62MmFHrpqr2s"
   end  
   
 end
+
+
+

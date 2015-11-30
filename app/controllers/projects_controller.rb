@@ -49,6 +49,8 @@ class ProjectsController < ApplicationController
 
 
     def edit
+        @bookmarks = current_user.bookmarklets
+    @bookmark = current_user.bookmarklets.build    
     end
 
     def update

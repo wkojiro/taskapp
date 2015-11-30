@@ -9,7 +9,9 @@ class TasksController < ApplicationController
     def show
      @project = Project.find(params[:project_id])
      @task = Task.find(params[:id])
- #    @subtask = Subtask.find(params[:id])   
+ #    @subtask = Subtask.find(params[:id])  
+    @bookmarks = current_user.bookmarklets
+    @bookmark = current_user.bookmarklets.build    
     end
 
 
@@ -32,7 +34,9 @@ class TasksController < ApplicationController
     def edit
      @project = Project.find(params[:project_id])
      @task = Task.find(params[:id])
- #   @subtask = Subtask.find(params[:id])        
+ #   @subtask = Subtask.find(params[:id])       
+    @bookmarks = current_user.bookmarklets
+    @bookmark = current_user.bookmarklets.build
     end
 
     def update

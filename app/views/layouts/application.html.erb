@@ -73,6 +73,9 @@
         </div>
         <div class="col-lg-3">
           <div class="well sidebar-nav">
+            
+            <% if current_user != nil %>
+            
             <h3><i class="fa fa-bookmark"></i>Bookmarks</h3>
             
             
@@ -121,7 +124,8 @@
 <% end %>
 <!-- if @bookmarks.any? -->
  
- 
+ <% end %>
+ <!-- if current_user nil -->
 
 
 

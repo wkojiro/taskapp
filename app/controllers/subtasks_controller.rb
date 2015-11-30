@@ -44,6 +44,8 @@ class SubtasksController < ApplicationController
      @project = Project.find(params[:project_id])
      @task = Task.find(params[:task_id])     
      @subtask = Subtask.find(params[:id])
+    @bookmarks = current_user.bookmarklets
+    @bookmark = current_user.bookmarklets.build     
     end
 
     def update

@@ -2,7 +2,7 @@
 <div class="row">
 
 <div class="col-md-12">    
-         <% form_for [@user,@bookmark] do |f| %>  
+         <%= form_for @bookmarks do |f| %>  
 <div class="form-group">
   <%= f.label :title, "タイトル", :class => 'control-label' %>
   <div class="controls">

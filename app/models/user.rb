@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
  # validates :username, presence: true, uniqueness: true
   has_many :projects, :dependent => :destroy
+  has_many :bookmarklets, :dependent => :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :timeoutable, :omniauthable, omniauth_providers: [:facebook, :twitter]  

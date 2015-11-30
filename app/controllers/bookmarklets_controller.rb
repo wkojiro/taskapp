@@ -4,34 +4,43 @@ class BookmarkletsController < ApplicationController
  
 
     def index
-       @bookmark = Bookmarklet.all
+        @bookmarks = current_user.bookmarklets
+     # @bookmark = @user.bookmarklets.build
     end
 
-
-   
     def new
-        @project = Project.find(param[:id])
-        @bookmark = @project.bookmarklets.build   
+        @bookmarks = @user.bookmarklets.build
     end
 
     def show
-        @bookmark = Bookmarklet.all
+        @bookmarks = current_user.bookmarklets
+
+        
+        
     end
 
     def create
-        @project = Project.find(param[:id])
-        @bookmark = @project.bookmarklets.build(bookmarklet_params)
+    @bookmark = current_user.bookmarklets.build(bookmarklet_params)
         if @bookmark.save
-        redirect_to set_request_from
+            flash[:success] = "bookmark created!"
+            redirect_to request.referrer 
         else
-        redirect_to set_request_from
+            redirect_to request.referrer 
         end
     end
 
+
+    
+    
+    
+    
+    
     
     def destroy
+        @bookmark = Bookmarklet.find(params[:id])   
         @bookmark.destroy
-        redirect_to set_request_from
+
+            redirect_to request.referrer 
     end
     private
     

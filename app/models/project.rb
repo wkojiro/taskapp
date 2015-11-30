@@ -1,6 +1,5 @@
 class Project < ActiveRecord::Base
     has_many :tasks, :dependent => :destroy
-    has_many :bookmarklets, :dependent => :destroy
     belongs_to :user
     validates :title, 
     presence:{ message: "タイトルを入力してください。"},

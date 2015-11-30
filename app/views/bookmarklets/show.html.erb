@@ -1,11 +1,29 @@
 
 
-<% @bookmark.each do |bookmark| %>
-<%= bookmark.title %>
-<% end %>
-
-
-
-
 
 <%= render :partial => 'form' %>
+
+sss
+<div class="row">
+
+<div class="col-md-12">    
+         <%= form_for @bookmarks do |f| %>  
+<div class="form-group">
+  <%= f.label :title, "タイトル", :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :title, :class => 'form-control' %>
+  </div>
+  <%= f.label :url, :class => 'control-label' %>
+  <div class="controls">
+ <%= f.text_field  :url,:class => 'form-control ckeditor'  %>
+  </div>  
+</div>
+
+
+
+               <div class="text-center">
+     
+            <%= f.submit "ブックマーク" ,:class => 'btn btn-default'%></div>
+            <% end %>
+</div>
+</div>  

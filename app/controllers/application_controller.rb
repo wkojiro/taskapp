@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
+#  include OmniauthCallbacksHelper
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :set_request_from
   # どこのページからリクエストが来たか保存しておく
+
   def set_request_from
     if session[:request_from]
       @request_from = session[:request_from]
@@ -20,5 +22,14 @@ class ApplicationController < ActionController::Base
     end
     return false
   end  
+
+#  private
+#  def logged_in_user
+#    unless logged_in?
+#      store_location
+#      flash[:danger] = "Please log in."
+#      redirect_to login_url
+#    end
+#  end  
   
 end

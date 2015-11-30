@@ -6,6 +6,11 @@ class ProjectsController < ApplicationController
    #   @projects = Project.all 
         if current_user != nil
          @projects = current_user.projects
+         @bookmark = current_user.bookmarklets.build
+         @user = current_user
+         @bookmarks = @user.bookmarklets
+         
+         
         else
         redirect_to new_user_registration_path
         end
@@ -13,7 +18,8 @@ class ProjectsController < ApplicationController
    end
     
    def show
-
+    @bookmark = current_user.bookmarklets.build
+    @bookmarks = current_user.bookmarklets
    end
  
  
@@ -31,6 +37,16 @@ class ProjectsController < ApplicationController
             render 'new'
         end
     end
+
+
+
+
+
+
+
+
+
+
 
     def edit
     end

@@ -33,8 +33,8 @@ module Taskapp
       :port => '587',
       :domain => 'smtp.gmail.com',
       :authentication => 'plain',
-      :user_name => 'wkojiro22@gmail.com',
-      :password => 'testtest222'
+      :user_name => '',
+      :password => ''
     }
     
   end

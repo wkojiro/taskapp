@@ -48,7 +48,7 @@ class BookmarkletsController < ApplicationController
     private
     
     def bookmarklet_params
-        params[:bookmarklet].permit(:title,:url)
+        params[:bookmarklet].permit(:title,:bookmarkurl)
     end
         
 

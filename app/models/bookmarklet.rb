@@ -1,6 +1,6 @@
 class Bookmarklet < ActiveRecord::Base
     belongs_to :user
-     validates :url,
+     validates :bookmarkurl,
      presence: true, 
      format: /\A#{URI::regexp(%w(http https))}\z/
   before_save :titleget
@@ -10,7 +10,7 @@ private
       
       agent = Mechanize.new
       agent.user_agent_alias = 'Windows IE 7'
-      @url = self.url
+      @url = self.bookmarkurl
       page = agent.get(@url)
     self.title = page.search('title').text
 #    self.title = "タイトル"

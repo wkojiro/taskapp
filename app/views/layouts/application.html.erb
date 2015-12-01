@@ -76,10 +76,13 @@
             
             <% if current_user != nil %>
 
+<% unless controller.controller_name == "registrations" %>   
+
+
           <div class="well sidebar-nav">
             <h3><i class="fa fa-bookmark"></i>Bookmarks</h3>
 
-            
+         
             
 
 <%= form_for @bookmark do |f| %>  
@@ -98,8 +101,6 @@
 <!-- error message -->
 
 
-
-
   <%= f.label :bookmarkurl, :class => 'control-label' %>
 
   <%= f.text_field  :bookmarkurl,:class => 'form-control'  %>
@@ -108,8 +109,9 @@
 <%= f.submit :class => "btn btn-primary btn-sm" %>
 </div>
 <% end %>            
+      
             
-            
+
 
 
 <!--　Bookmark があれば表示　-->
@@ -144,7 +146,10 @@
            </div><!--/.well -->
  <% end %>
  <!-- if current_user nil -->  
-
+ <% end %>
+  <!-- unless controller.controller_name == "Devise" -->  
+ 
+ 
         </div><!--/span-->
       </div><!--/row-->
     </div><!-- /container -->

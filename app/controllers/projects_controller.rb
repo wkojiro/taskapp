@@ -25,7 +25,8 @@ class ProjectsController < ApplicationController
  
     def new
      @project = current_user.projects.build
-        
+    @bookmarks = current_user.bookmarklets
+    @bookmark = current_user.bookmarklets.build          
     end
 
     def create
@@ -49,7 +50,7 @@ class ProjectsController < ApplicationController
 
 
     def edit
-        @bookmarks = current_user.bookmarklets
+    @bookmarks = current_user.bookmarklets
     @bookmark = current_user.bookmarklets.build    
     end
 

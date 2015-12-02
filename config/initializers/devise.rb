@@ -267,12 +267,10 @@ Devise.setup do |config|
     config.omniauth :facebook,Rails.application.secrets.facebook_app_id,Rails.application.secrets.facebook_app_secret 
     config.omniauth :twitter, Rails.application.secrets.twitter_consumer_key,Rails.application.secrets.twitter_consumer_secret
   else
-    config.omniauth :facebook, ENV["FACEBOOK_APP_ID"] , ENV["FACEBOOK_APP_SECRET"] 
-    config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
+    config.omniauth :facebook,Rails.application.secrets.facebook_app_id,Rails.application.secrets.facebook_app_secret 
+    config.omniauth :twitter, Rails.application.secrets.twitter_consumer_key,Rails.application.secrets.twitter_consumer_secret
+#    
+#    config.omniauth :facebook, ENV["FACEBOOK_APP_ID"] , ENV["FACEBOOK_APP_SECRET"] 
+#    config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
   end  
-
-  
 end
-
-
-

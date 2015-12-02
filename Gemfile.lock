@@ -242,6 +242,7 @@ DEPENDENCIES
   less-rails
   mechanize
   momentjs-rails
+  omniauth
   omniauth-facebook
   omniauth-twitter
   pg

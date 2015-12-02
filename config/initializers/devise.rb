@@ -261,14 +261,20 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 #  config.omniauth :twitter, "dnPLQpXwegx3cwApQd4UnRnDy", "XEIOZTR8EYDA36gkbHdBVmWsQIMxjxk9LBOmBe62MmFHrpqr2s"
+  config.omniauth :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET'], display: 'popup'
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], display: 'popup'  
   
-  if Rails.env.production?
-    config.omniauth :facebook, "805090062949842", "dcb6c851f5b16be8c109d56ac0dd9466" 
-    config.omniauth :twitter, "1gAdO55zMKsWu8FhZG54O4s8S", "xNAW6luvu4tWNYDvigjKsnyOMgAgtRbrsR3INdl8BT7UQSmAtj" 
-  else
-    config.omniauth :facebook, "165452037143186", "520435c381d1fc659dd9d6a5ff65f3d0" 
-    config.omniauth :twitter, "dnPLQpXwegx3cwApQd4UnRnDy", "XEIOZTR8EYDA36gkbHdBVmWsQIMxjxk9LBOmBe62MmFHrpqr2s" 
-  end
+  
+
+  
+#  if Rails.env.production?
+#    config.omniauth :facebook, "805090062949842", "dcb6c851f5b16be8c109d56ac0dd9466" 
+#    config.omniauth :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET'], display: 'popup'    
+    #config.omniauth :twitter, "1gAdO55zMKsWu8FhZG54O4s8S", "xNAW6luvu4tWNYDvigjKsnyOMgAgtRbrsR3INdl8BT7UQSmAtj" 
+#  else
+#    config.omniauth :facebook, "165452037143186", "520435c381d1fc659dd9d6a5ff65f3d0" 
+#    config.omniauth :twitter, "dnPLQpXwegx3cwApQd4UnRnDy", "XEIOZTR8EYDA36gkbHdBVmWsQIMxjxk9LBOmBe62MmFHrpqr2s" 
+#  end
   
 end
 

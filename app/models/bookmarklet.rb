@@ -1,29 +1,44 @@
 class Bookmarklet < ActiveRecord::Base
     belongs_to :user
-     validates :bookmarkurl,
-     presence: true, 
-     format: /\A#{URI::regexp(%w(http https))}\z/
-  before_save :titleget
+    validates :bookmarkurl,
+    presence: true, 
+    format: /\A#{URI::regexp(%w(http https))}\z/
+    before_save :titleget
 
 private
   def titleget
       
       agent = Mechanize.new
       agent.user_agent_alias = 'Windows IE 7'
-      @url = self.bookmarkurl
-      page = agent.get(@url)
-    self.title = page.search('title').text
+            @url = self.bookmarkurl
+        begin
+              page = agent.get(@url)
+        rescue SocketError => e
+              puts e.message
+        end      
+      
+      if page != nil
+      self.title = page.search('title').text      
+      else
+      self.title = @url
+      end
 #    self.title = "タイトル"
     
   end
+ 
+      
+      
+      
       
 #     unless url nil
 #          agent = Mechanize.new
 #          page = agent.get("http://qiita.com")
 #          @bookmark = page.search('title')
 #      end
-      
-      
+
+
+
+
       
 #オブジェクトの生成・更新・削除のタイミングで呼び出されるメソッド
 #トリガとなるイベント(validation,saveなど)の前(before)と後(after)に登録可能

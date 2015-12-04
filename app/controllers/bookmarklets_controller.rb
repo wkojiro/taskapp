@@ -7,37 +7,28 @@ class BookmarkletsController < ApplicationController
  # before_action :title_get!
 
     def index
-        @bookmarks = current_user.bookmarklets
-     # @bookmark = @user.bookmarklets.build
     end
 
     def new
-        @bookmarks = @user.bookmarklets.build
     end
 
     def show
-        @bookmarks = current_user.bookmarklets
 
-        
-        
     end
 
     def create
-    @bookmark = current_user.bookmarklets.build(bookmarklet_params)
+    @user = current_user
+    @bookmark = @user.bookmarklets.build(bookmarklet_params)
         if @bookmark.save
             flash[:success] = "bookmark created!"
             redirect_to request.referrer 
         else
+            flash[:alert] = "ご登録できませんでした。正しいURLをhttpからご入力下さい。"            
             redirect_to request.referrer 
         end
     end
 
 
-    
-    
-    
-    
-    
     
     def destroy
         @bookmark = Bookmarklet.find(params[:id])   

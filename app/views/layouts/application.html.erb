@@ -33,7 +33,8 @@
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-    <script src="//cdn.ckeditor.com/4.5.5/standard/ckeditor.js"></script>
+<%= javascript_include_tag "//cdn.ckeditor.com/4.5.5/standard/ckeditor.js" %>    
+  <!--  <script src="//cdn.ckeditor.com/4.5.5/standard/ckeditor.js"></script>-->
  <%# yield(:head_js) %>
     <%= javascript_include_tag "application" %>
   </head>
@@ -66,7 +67,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-9 leftbox">
        <!--   <p class="notice"><%# notice %></p>
           <p class="alert"><%# alert %></p>   -->       
           <%= bootstrap_flash %>
@@ -87,23 +88,13 @@
 
 <%= form_for @bookmark do |f| %>  
 <!-- error message -->
-<% if @bookmark.errors.any? %>
-  <div id="error_explanation">
-
- 
-    <ul>
-    <% @bookmark.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+ <%= render 'shared/error_messages', object: f.object %>
 <!-- error message -->
 
 
   <%= f.label :bookmarkurl, :class => 'control-label' %>
 
-  <%= f.text_field  :bookmarkurl,:class => 'form-control'  %>
+  <%= f.text_field  :bookmarkurl,:class => 'form-control', :placeholder => "http or https required.." , data: {toggle: "tooltip", placement: "bottom" }, title: "httpからURLをご登録下さい。" %>
   <br >
 <div class="text-center">
 <%= f.submit :class => "btn btn-primary btn-sm" %>
@@ -156,7 +147,12 @@
 
     </div> <!-- /wrap -->
       <footer class="text-center" id="footer">
-        <p>&copy; Company 2015</p>
+        <p>&copy; KOJIRO WAKABAYASHI 2015</p>
       </footer>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
   </body>
 </html>

@@ -1,9 +1,7 @@
 <%- model_class = @task -%>
 <%# addcustomjs 'ckeditor/init' %>
 <%# addcustomjs 'ckeditor/config' %>
-<div class="page-header">
   <h1><%= @task.title %></h1>
-</div>
 
 
 
@@ -19,7 +17,7 @@
               </div>    
                  <div class = "col-sm-1">
  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_project_task_subtask_path(@project, @task, subtask) ,:class => 'btn btn-xs btn-default' %>
+              edit_project_task_subtask_path(@project, @task, subtask) ,:class => 'btn btn-xs btn-default', data: { no_turbolink: true } %>
                </div>  
                <div class = "col-sm-1">
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

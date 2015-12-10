@@ -5,6 +5,8 @@ class BookmarkletsController < ApplicationController
   # 保存する前にTitleを取得
   # 失敗したら、リダイレクトされる
  # before_action :title_get!
+before_action :authenticate_user!
+
 
     def index
     end

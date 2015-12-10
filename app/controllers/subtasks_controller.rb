@@ -1,5 +1,5 @@
 class SubtasksController < ApplicationController
-    
+    before_action :authenticate_user!
     def create
     @porject = Project.find(params[:project_id])    
      @task = Task.find(params[:task_id])

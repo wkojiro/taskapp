@@ -2,8 +2,11 @@ class ApplicationController < ActionController::Base
 #  include OmniauthCallbacksHelper
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+#  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+#  rescue_from ActionController::RoutingError, with: :render_404
   protect_from_forgery with: :exception
   before_action :set_request_from
+
   # どこのページからリクエストが来たか保存しておく
 
   def set_request_from
@@ -31,5 +34,13 @@ class ApplicationController < ActionController::Base
 #      redirect_to login_url
 #    end
 #  end  
-  
+
+
+
+#  def render_404
+
+#  render template: 'errors/error_404', status: 404, layout: 'application', content_type: 'text/html'
+#  end
+
+
 end

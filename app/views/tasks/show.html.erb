@@ -1,6 +1,8 @@
 <%- model_class = @task -%>
 <%# addcustomjs 'ckeditor/init' %>
 <%# addcustomjs 'ckeditor/config' %>
+
+
   <h1><%= @task.title %></h1>
 
 
@@ -60,7 +62,7 @@
   </div>
   <%= f.label :description, :class => 'control-label' %>
   <div class="controls">
- <%= f.text_area  :description,:class => 'form-control ckeditor' ,:cols =>"80" ,:rows =>"10" %>
+ <%= f.text_area  :description, :id => 'editor1', :class => 'form-control ckeditor' ,:cols =>"80" ,:rows =>"10" %>
   </div>  
 </div>
 
@@ -94,3 +96,28 @@
         });
 </script>     
 
+<script>
+
+		var config = {
+		    extraPlugins: 'image2',
+			extraPlugins: 'codesnippet',
+			codeSnippet_theme: 'monokai_sublime',
+
+			toolbarGroups: [
+				{"name":"basicstyles","groups":["basicstyles"]},
+				{"name":"links","groups":["links"]},
+				{"name":"paragraph","groups":["list","blocks"]},
+				{"name":"document","groups":["mode"]},
+				{"name":"insert","groups":["insert"]},
+				{"name":"styles","groups":["styles"]},
+				{"name":"about","groups":["about"]}
+			],
+			// Remove the redundant buttons from toolbar groups defined above.
+			removeButtons: 'Subscript,Superscript,Anchor,SpecialChar,About'
+
+		};
+
+
+
+		CKEDITOR.replace( 'editor1', config );
+</script>      

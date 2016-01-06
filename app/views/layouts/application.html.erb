@@ -33,7 +33,7 @@
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-<%= javascript_include_tag "//cdn.ckeditor.com/4.5.5/standard/ckeditor.js" %>    
+<%= javascript_include_tag "//cdn.ckeditor.com/4.5.5/standard-all/ckeditor.js" %>    
   <!--  <script src="//cdn.ckeditor.com/4.5.5/standard/ckeditor.js"></script>-->
  <%# yield(:head_js) %>
     <%= javascript_include_tag "application" %>
@@ -149,6 +149,7 @@
       <footer class="text-center" id="footer">
         <p>&copy; KOJIRO WAKABAYASHI 2015</p>
       </footer>
+    
 <script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 

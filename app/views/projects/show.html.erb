@@ -1,15 +1,17 @@
 <%- model_class = Project -%>
 
 
+
+
   <h1><%= @project.title %></h1>
 
 
 
-<% (0..30).each do |i| %>
-<% @taskday = i.day.ago.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
+<%# (0..500).each do |i| %>
+<%# @taskday = i.day.ago.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
 
         <% @project.tasks.each do |task| %>
-        <% if task.updated_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日') == @taskday %>
+        <%# if task.updated_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日') == @taskday %>
         <ul>
         <li>   <%= task.updated_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
                                             <%= check_box_tag '','', task.done, {'data-id' => task.id, 'data-project_id'=> task.project_id} %>
@@ -26,9 +28,9 @@
                                             <%= link_to "delete", project_task_path(task.project_id,task.id), method: :delete, data: {confirm: "are you sure?"},:class => 'btn btn-xs btn-danger'  %>           
          </li>
         </ul>        
-    <% end %>
+    <%# end %>
   <% end %>
-<% end %>
+<%# end %>
 
 <div class="row">
 <div class="col-md-8 col-md-offset-2">

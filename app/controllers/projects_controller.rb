@@ -1,16 +1,25 @@
 class ProjectsController < ApplicationController
+  before_action :set_user    
   before_action :set_project, only: [:show,:edit,:update,:destroy]
   before_action :authenticate_user!
    
    def index
    #   @projects = Project.all 
-        if current_user != nil
-         @projects = current_user.projects
-         @bookmark = current_user.bookmarklets.build
-         @user = current_user
+   # 戻り値が true ならサインイン済み。
+#   http://qiita.com/Salinger/items/873e3c667462746ae707
+#user_signed_in?
+# サインインしている全ユーザー取得
+#current_user
+# ユーザーのセッション情報
+#user_session
+
+
+        if user_signed_in? 
+
+         @projects = @user.projects
+         @bookmark = @user.bookmarklets.build
          @bookmarks = @user.bookmarklets
-         
-         
+
         else
         redirect_to new_user_registration_path
         end
@@ -18,8 +27,12 @@ class ProjectsController < ApplicationController
    end
     
    def show
-    @bookmark = current_user.bookmarklets.build
-    @bookmarks = current_user.bookmarklets
+        if @project.present? &&  @project.user_id == @user.id 
+           @bookmark = current_user.bookmarklets.build
+           @bookmarks = current_user.bookmarklets
+        else
+        redirect_to new_user_registration_path
+        end
    end
  
  
@@ -75,7 +88,17 @@ class ProjectsController < ApplicationController
     end
     
     def set_project
-    @project = Project.find(params[:id])     
+      begin
+       @project = Project.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => e
+        redirect_to new_user_registration_path
+      end
     end
     
+    def set_user
+        @user = current_user
+#             @current_user ||= User.find_by(id: session[:user_id])
+ # @user ||= User.find_by(id: user_session[:user_id])
+ #   @user = User.find(user_session[:id])
+    end
 end

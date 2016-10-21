@@ -4,85 +4,60 @@
 
 
   <h1><%= @task.title %></h1>
-
-
-
- <% @task.subtasks.each_with_index do |subtask, i| %>
- <div class = "row">
-     <div class = "col-sm-12" style="border-bottom:1px solid #ddd">
-              <div class = "col-sm-1">
-                  <%= i+1 %>
- <%= check_box_tag '','', subtask.done, {'data-id' => subtask.id, 'data-task_id'=> subtask.task_id,'data-project_id'=> subtask.task.project_id } %>
-             </div>
-             <div class = "col-sm-9">
-                 <p><%= subtask.memo.html_safe %></p>
-              </div>    
-                 <div class = "col-sm-1">
- <%= link_to t('.edit', :default => t("helpers.links.edit")),
+ 　<% @task.subtasks.each_with_index do |subtask, i| %>
+    <div class = "row">
+        <div class = "col-sm-12" style="border-bottom:1px solid #ddd">
+            <div class = "col-sm-1">
+            <%= i+1 %>
+            <%= check_box_tag '','', subtask.done, {'data-id' => subtask.id, 'data-task_id'=> subtask.task_id,'data-project_id'=> subtask.task.project_id } %>
+            </div>
+            <div class = "col-sm-9">
+                 <p><%= subtask.memo %></p>
+            </div>    
+            <div class = "col-sm-1">
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_project_task_subtask_path(@project, @task, subtask) ,:class => 'btn btn-xs btn-default', data: { no_turbolink: true } %>
-               </div>  
-               <div class = "col-sm-1">
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              project_task_subtask_path(@project, @task, subtask), 
+            </div>  
+            <div class = "col-sm-1">
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),project_task_subtask_path(@project, @task, subtask), 
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-xs btn-danger' %>
-              </div>  
-
+            </div>  
+        </div>
     </div>
- </div>
 
- <div class="row">
-<div class = "col-sm-12" >
-       <div class = "col-md-9 col-md-offset-1">
- <%= raw subtask.description %>
- <%= subtask.description.html_safe %>
-  <%== subtask.description %>
+    <div class="row">
+        <div class = "col-sm-12" >
+            <div class = "col-md-9 col-md-offset-1">
+               <%== subtask.description %>
+            </div>
+        </div>
     </div>
-   </div>
-  </div>
- <hr style="border-bottom:3px solid #ddd">
+<hr style="border-bottom:3px solid #ddd">
  
- <% end %>
+<% end %>
 
-
-
-
-
-
-
-              
 
 <div class="row">
-
-<div class="col-md-12">    
-            <%= form_for [@project,@task, @task.subtasks.build] do |f| %>   
-<div class="form-group">
-  <%= f.label :memo, "タイトル", :class => 'control-label' %>
-  <div class="controls">
-    <%= f.text_field :memo, :class => 'form-control' %>
-  </div>
-  <%= f.label :description, :class => 'control-label' %>
-  <div class="controls">
- <%= f.text_area  :description, :id => 'editor1', :class => 'form-control ckeditor' ,:cols =>"80" ,:rows =>"10" %>
-  </div>  
-</div>
-
-
-
-               <div class="text-center">
-     
-            <%= f.submit "メモ" ,:class => 'btn btn-default'%></div>
-            <% end %>
-</div>
+    <div class="col-md-12">    
+        <%= form_for [@project,@task, @task.subtasks.build] do |f| %>   
+        <div class="form-group">
+            <%= f.label :memo, "タイトル", :class => 'control-label' %>
+            <div class="controls">
+            <%= f.text_field :memo, :class => 'form-control' %>
+            </div>
+            <%= f.label :description, :class => 'control-label' %>
+            <div class="controls">
+            <%= f.text_area  :description, :id => 'editor1', :class => 'form-control ckeditor' ,:cols =>"80" ,:rows =>"10" %>
+            </div>  
+        </div>
+    <div class="text-center">
+    <%= f.submit "メモ" ,:class => 'btn btn-default'%></div>
+    <% end %>
+    </div>
 </div>  
 
-
-
-
-
-
-              
               
 <%= link_to t('.back', :default => t("helpers.links.back")),
               project_path(@project), :class => 'btn btn-default'  %>              

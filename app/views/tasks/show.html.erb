@@ -15,7 +15,7 @@
  <%= check_box_tag '','', subtask.done, {'data-id' => subtask.id, 'data-task_id'=> subtask.task_id,'data-project_id'=> subtask.task.project_id } %>
              </div>
              <div class = "col-sm-9">
-                 <p><%= subtask.memo%></p>
+                 <p><%= subtask.memo.html_safe %></p>
               </div>    
                  <div class = "col-sm-1">
  <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -35,7 +35,9 @@
  <div class="row">
 <div class = "col-sm-12" >
        <div class = "col-md-9 col-md-offset-1">
- <%=  raw subtask.description %>
+ <%= raw subtask.description %>
+ <%= subtask.description.html_safe %>
+  <%== subtask.description %>
     </div>
    </div>
   </div>

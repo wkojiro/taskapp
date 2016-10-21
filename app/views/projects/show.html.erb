@@ -12,7 +12,7 @@
 
         <% @project.tasks.each do |task| %>
         <%# if task.updated_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日') == @taskday %>
-        <ul>
+        <ul class="task">
         <li>   <%= task.updated_at.in_time_zone('Tokyo').strftime('%Y年%m月%d日') %>
                                             <%= check_box_tag '','', task.done, {'data-id' => task.id, 'data-project_id'=> task.project_id} %>
                                      

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 #  rescue_from ActionController::RoutingError, with: :render_404
   protect_from_forgery with: :exception
   before_action :set_request_from
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   # どこのページからリクエストが来たか保存しておく
 
@@ -25,6 +26,14 @@ class ApplicationController < ActionController::Base
     end
     return false
   end  
+
+  protected
+  
+# https://dev.9bar.tokyo/rails/devise-strong-paramaters
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :username
+    devise_parameter_sanitizer.for(:account_update) << :username
+  end
 
 #  private
 #  def logged_in_user
